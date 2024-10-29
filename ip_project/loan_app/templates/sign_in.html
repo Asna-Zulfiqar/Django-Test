@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'signup-style.css' %}">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="toggle-buttons">
+            <button id="author-btn" class="toggle-btn active">Lender</button>
+            <button id="user-btn" class="toggle-btn">Borrower</button>
+        </div>
+    
+        <div class="form-container">
+            <!-- Author Form -->
+            <form id="author-form" method="POST" class="form {% if author_form.is_bound %}active{% endif %}">
+                {% csrf_token %}
+                {{ lender_form.as_p }}
+                <button type="submit" name="author-btn" class="submit-btn">Sign Up as Lender</button>
+            </form>
+    
+            <!-- User Form -->
+            <form id="user-form" method="POST" class="form {% if user_form.is_bound %}active{% endif %}">
+                {% csrf_token %}
+                {{ borrower_form.as_p }}
+                <button type="submit" name="user-btn" class="submit-btn">Sign Up as Borrower</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <script src="{% static 'signup-script.js' %}"></script>
+</body>
+</html>
