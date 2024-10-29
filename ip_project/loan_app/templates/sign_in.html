@@ -16,14 +16,14 @@
         </div>
     
         <div class="form-container">
-            <!-- Author Form -->
+            <!-- Lender Form -->
             <form id="author-form" method="POST" class="form {% if author_form.is_bound %}active{% endif %}">
                 {% csrf_token %}
                 {{ lender_form.as_p }}
                 <button type="submit" name="author-btn" class="submit-btn">Sign Up as Lender</button>
             </form>
     
-            <!-- User Form -->
+            <!-- Borrower Form -->
             <form id="user-form" method="POST" class="form {% if user_form.is_bound %}active{% endif %}">
                 {% csrf_token %}
                 {{ borrower_form.as_p }}
