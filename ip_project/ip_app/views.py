@@ -1,6 +1,8 @@
 from django.shortcuts import render , HttpResponse
 from .decorators import  ip_decorator
 
+   
+# Ip Access using Views
 def local(request):
     user_ip = request.META.get('HTTP_X_FORWARDED_FOR')
     if user_ip:
@@ -12,7 +14,7 @@ def local(request):
         return HttpResponse('Page accesible by Local Ip')
     else:
         return HttpResponse('Access Denied: Local Ip')
-    
+
 def live(request):
     user_ip = request.META.get('HTTP_X_FORWARDED_FOR')
     if user_ip:
@@ -24,13 +26,16 @@ def live(request):
         return HttpResponse('Page accesible by Live Ip')
     else:
         return HttpResponse('Access Denied: Live Ip')
-    
+        
+# Ip Access using Middleware    
 def local_page(request):
     return HttpResponse('Page accesible by Local Ip')
-
+ 
 def live_page(request):
     return HttpResponse('Page accesible by Live Ip')
 
+   
+# Ip Access using Decorator  
 @ip_decorator
 def local_page_view(request):
     return HttpResponse('Page accesible by Local Ip')
